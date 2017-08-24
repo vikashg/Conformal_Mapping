@@ -2,7 +2,8 @@ addpaths;
 readInputFile;
 input_file_other_subjs;
 
-trk_cell_dir=strcat(output_dir_tracks, '/Segmented_tracks/');
+%trk_cell_dir=strcat(output_dir_tracks, '/Segmented_tracks/');
+trk_cell_dir = output_dir_tracks
 %trk_cell_dir=strcat(data_dir, '/Trk_2_Cell/Segmented_tracks/');
 out_dir=strcat(output_dir_tracks, 'Resampled_augmented_convol/');
 
@@ -18,10 +19,13 @@ sz = 10;
 a=10;
 b=100000;
 
+
+extension='_removed.mat'
+
 for trk_num =1:length(roi)
 
 roi{trk_num}
-tracks_file = strcat(trk_cell_dir,  roi{trk_num}, '.mat');
+tracks_file = strcat(trk_cell_dir,  roi{trk_num}, extension);
 %tracks_file = strcat(data_dir,  roi{trk_num}, '.mat');
 
 if (exist(tracks_file) > 0)
@@ -86,7 +90,7 @@ fiber_cell_all(1:numFibers) = fibers_orig;
 fiber_cell_all(numFibers + 1:end) = new_fibers_cell;
 fibers_orig = fiber_cell_all;
 tracks_resampled_cell = fibers_orig;
-outFile=strcat(out_dir, roi{trk_num}, '.mat');
+outFile=strcat(out_dir, roi{trk_num}, extension);
 
 save(outFile, 'tracks_resampled_cell');
 

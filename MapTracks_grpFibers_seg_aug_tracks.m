@@ -13,8 +13,9 @@ input_file_other_subjs;
 %roi=trk_list{part_num}
 roi
 subj
+extension
 trk_dir= strcat(output_dir_tracks, 'Resampled_augmented_convol/');
-trk_cell_file=strcat(trk_dir, roi, '.mat')
+trk_cell_file=strcat(trk_dir, roi, extension)
 output_dir_map = map_tracks_dir %changed output_dir to output_dir_map
 
 %if file doesn't exist exit
@@ -55,6 +56,6 @@ i
 end
 
 
-output_file=strcat(output_dir_map, 'Mapped_tracks_', roi , '.mat');
+output_file=strcat(output_dir_map, 'Mapped_tracks_', roi , extension);
 save(output_file, 'Mapped_tracks');
 disp (output_file);
