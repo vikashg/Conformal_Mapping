@@ -1,12 +1,13 @@
 %% Read files from DTISearch
+function ComputeConformlaMapping(input_file)
 addpaths;
 readInputFile;
 input_file_other_subjs;
-load_data_index_coord; %use this if no flipping is required; figure with
+%load_data_index_coord; %use this if no flipping is required; figure with
 %boundary points and plot tracts (some) to check if aligned or not
 
 %For HCP anterior posterior is flipped so use this 
-%load_data_index_coord_flip_anter_poster;
+load_data_index_coord_flip_anter_poster;
 %stepSizeforStreamLines =1; %%%%delete
 
 gridSize_wPadding = gridSize + Padding;

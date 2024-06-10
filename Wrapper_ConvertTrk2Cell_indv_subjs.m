@@ -24,7 +24,7 @@ save(file_name, 'track_cell');
 disp('All tracts converted');
 
 %% Do the length thresholding 
-num_tracks = length(track_cell)
+num_tracks = length(track_cell);
 trk_length_vector = zeros(num_tracks, 1); 
 
 for i =1:num_tracks

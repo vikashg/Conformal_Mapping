@@ -2,7 +2,7 @@
 fid = fopen(input_file);
 input_cell = cell(9,1);
 i = 1;
-tline = fgetl(fid)
+tline = fgetl(fid);
 while ischar(tline)
     temp_Cell{i} = tline;
     tline = fgetl(fid);

@@ -70,6 +70,7 @@ for i = 1:gridSize_wPadding(1)
 end
 
 %% Now work with the fibers 
+trk_file_path = strcat(trk_file_path, 'tracts/whole_brain.trk')
 [header, tracks] = trk_read(trk_file_path);
 track_cell_result = ConvertTrk2Cell(tracks, Padding, voxDim)
 

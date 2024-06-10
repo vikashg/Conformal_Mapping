@@ -1,4 +1,5 @@
 function DivideTracks_trk_format(tracks, num_tracks_per_bundle, number_of_points_per_track, Padding, voxDim, output_dir)
+
     num_tracks = length(tracks); 
     num_bundles = floor(num_tracks/num_tracks_per_bundle);
     
@@ -16,8 +17,6 @@ function DivideTracks_trk_format(tracks, num_tracks_per_bundle, number_of_points
         end
          
         divnum_s = num2str(i+1);
-        k_start 
-        k_end
         
         tracks_part_temp = tracks(k_start:k_end);
         tracks_interpolated = trk_interp(tracks_part_temp, number_of_points_per_track);
@@ -27,7 +26,8 @@ function DivideTracks_trk_format(tracks, num_tracks_per_bundle, number_of_points
         filePath = strcat(output_dir, 'Tracks_', divnum_s, '.mat');
         save(filePath, 'tracks_resampled_cell');
         
-        dispString = strcat('Part ' , divnum_s, ' written.');
+        dispString = strcat('Part ' , divnum_s, ' of' , num_bundles, ' written.');
+        disp(dispString)
                          
     end
 end

@@ -10,7 +10,7 @@ map_tracks_dir = input_cell{9};
 
 %subj='0012310';
 data_dir=strcat(dir, subj, '/');
-shapecenter_file=strcat(data_dir, 'MNI_2_FA/ShapeCenter.txt');
+shapecenter_file=strcat(data_dir, 'ShapeCenter.txt');
 shapeCenter_woPad = load(shapecenter_file);
 
 Padding=[20, 20, 20];
@@ -34,7 +34,7 @@ eps=1e-4; %% Accuracy of the computation lower it for increased accuracy = lower
 %% Parameters for tracks
 track_sample_size = 1;
 number_of_points_per_track = 50;
-num_tracks_per_bundle=10000;
+num_tracks_per_bundle=50000;
 length_threshold=50;
 
 %% Parameters for storing tracks
@@ -48,7 +48,7 @@ if (exist(sep_output_dir) == 0)
 end
 
 %% Parameters for length thresholding on test subjects Not needed for training subjects 
-length_threshold_min = 35; %change from 35 to 33
+length_threshold_mi = 35; %change from 35 to 33
 length_threshold_max = 230; 
 
 %% Parameters for convolutions on the training dataset 
@@ -56,5 +56,9 @@ max_number_fibers=7500;
 
 %% List of tracks to be considered for training
 %trk_list={'atr_l', 'atr_r' ,'cc_frontal', 'cc_occipital', 'cc_parietal', 'cc_temporal', 'cgc_l', 'cgc_r' , 'cst_l' ,'cst_r' ,'ifo_l' ,'ifo_r', 'ilf_l', 'ilf_r' , 'slf_l' , 'unc_l', 'unc_r'} %, 'cc_prcg', 'cc_pocg'};
-trk_list={'atr_l', 'atr_r' ,'cc_frontal', 'cc_occipital', 'cc_parietal', 'cc_temporal', 'cgc_l', 'cgc_r' , 'cst_l' ,'cst_r' ,'ifo_l' ,'ifo_r', 'ilf_l', 'ilf_r' , 'slf_l'} %, 'cc_prcg', 'cc_pocg'};
+%trk_list={'atr_l', 'atr_r' ,'cc_frontal', 'cc_occipital', 'cc_parietal', 'cc_temporal', 'cgc_l', 'cgc_r' , 'cst_l' ,'cst_r' ,'ifo_l' ,'ifo_r', 'ilf_l', 'ilf_r' , 'slf_l'} %, 'cc_prcg', 'cc_pocg'};
 %trk_list={'atr_l', 'atr_r' ,'cc_frontal', 'cc_occipital', 'cc_parietal', 'cc_pocg', 'cc_prcg', 'cc_temporal', 'cgc_l', 'cgc_r' , 'cst_l' ,'cst_r' ,'ifo_l' ,'ifo_r', 'ilf_l', 'ilf_r' , 'slf_l' , 'unc_l', 'unc_r', 'pocg-parietal_r', 'pocg-parietal_l', 'pocg-parietal_r', 'prcg-pocg_l', 'prcg-pocg_r', 'occipital_l', 'occipital_r', 'fronto-prcg_l', 'fronto-prcg_r', 'phc_l', 'phc_r'};
+%trk_list={'L_Corticospinal_Tract', 'L_Frontal_Aslant_Tract', 'L_IFOF', 'L_SLF_3'}
+
+trk_list={'AF_L','AF_R','CING_L','CING_R','CST_L','CST_R','DRTT_L','DRTT_R','FAT_L','FAT_R','IFOF_L','IFOF_R','ILF_L','ILF_R', 'MdLF_L','MdLF_R','OR_L','OR_R','SLF2_L','SLF2_R','SLF3_L','SLF3_R','UF_L','UF_R', 'VOF_L','VOF_R'};
+

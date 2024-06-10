@@ -1,19 +1,25 @@
-addpaths;
+function Plot_TrksBoundVox(input_file)
+
+%input_file='/raid/Data/FiberClustering/complete/12240219/input_file.txt'
+
 readInputFile;
 input_file_other_subjs;
+step_size = 500;
+qc_dir=strcat('/raid/Data/FiberClustering/qc/', subj);
+
 
 if (exist(qc_dir) == 0)
      mkdir(qc_dir)
 end
 
-load_data_index_coord;
+%load_data_index_coord;
 %load (strcat(output_dir_T1, '/streamlines.mat')'
 
-%load_data_index_coord_flip_anter_poster;
-load(trk_file_name)
+load_data_index_coord_flip_anter_poster;
+%load(trk_file_name)
 
-copied from ComputeConformalMapping because we do not need to compute the
-Laplace Computation
+%copied from ComputeConformalMapping because we do not need to compute the
+%Laplace Computation
 
 gridSize_wPadding = gridSize + Padding;
 sx=gridSize_wPadding(1); sy = gridSize_wPadding(2); sz = gridSize_wPadding(3);
@@ -114,9 +120,8 @@ trk_length_vector = trk_length(tracks);
 filtered_tracks_idx = find(trk_length_vector < length_threshold_max & trk_length_vector > length_threshold_min);
 
 tracks_filtered = tracks(filtered_tracks_idx);
-
 tracks_cell=cell(length(tracks_filtered),1);
-    for i=1:1:length(tracks_filtered)
+    for i=1:step_size:length(tracks_filtered)
         track_i = tracks_filtered(i);
 
         % Pad and convert to voxel coordinates
@@ -135,7 +140,7 @@ figure();
 hold on; grid on; 
 plot3(boundVox(:,1), boundVox(:,2), boundVox(:,3), '.');
 plot3(shapeCenter(1), shapeCenter(2), shapeCenter(3), 'r*');
-for k=1:100:length(track_cell_result)
+for k=1:step_size:length(track_cell_result)
     a = track_cell_result{k};
     plot3(a(:,1), a(:,2), a(:,3));
 end
@@ -145,9 +150,11 @@ xlabel('x');
 zlabel('z');
 ylabel('y');
 
-saveas(gcf,strcat(qc_dir, '/', subj, '_trk_QC.png'), 'png');
+saveas(gcf, strcat(qc_dir, '/', subj, '_trk_QC.png'), 'png');
+saveas(gcf, strcat(qc_dir, '/', subj, '_trk_QC.fig'));
+
 Image = strcat(qc_dir, '/', subj, '_trk_QC.png');
 
 %pause;
-close all;
 %end
+
