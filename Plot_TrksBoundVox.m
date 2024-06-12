@@ -12,8 +12,8 @@ load_data_index_coord;
 %load_data_index_coord_flip_anter_poster;
 load(trk_file_name)
 
-copied from ComputeConformalMapping because we do not need to compute the
-Laplace Computation
+%copied from ComputeConformalMapping because we do not need to compute the
+%Laplace Computation
 
 gridSize_wPadding = gridSize + Padding;
 sx=gridSize_wPadding(1); sy = gridSize_wPadding(2); sz = gridSize_wPadding(3);
